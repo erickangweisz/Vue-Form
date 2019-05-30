@@ -1,10 +1,11 @@
 <template>
   <div class="product-form">
-    <h2>{{ msg }}</h2>
-    <button class='btn btn-success mt-5 mb-5'
+
+    <button class='btn btn-primary mt-5 mb-5'
         @click="addNewProductForm">
         Añadir nuevo
     </button>
+
     <div class='card mb-3'
       v-for='(product, index) in products' :key="index">
       <div class='card-body'>
@@ -22,6 +23,11 @@
         </div>
       </div>
     </div>
+
+    <button class='btn btn-primary mt-5 mb-5'>
+        Enviar Correo
+    </button>
+    
   </div>
 </template>
 
@@ -29,9 +35,6 @@
 export default {
   name: 'ProductForm',
   template: 'product-form',
-  props: {
-    msg: String
-  },
   data: () => {
     return {
       products: [{
@@ -50,7 +53,8 @@ export default {
         })
     },
     deleteProductForm(index) {
-      this.products.splice(index, 1)
+        if (this.products.length-1 >= 1)
+            this.products.splice(index, 1)
     }
   }
 }
